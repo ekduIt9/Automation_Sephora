@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,22 @@ namespace Automation_Sephora
         public MainWindow()
         {
             InitializeComponent();
+        }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ChromeDriver chromeDriver = new ChromeDriver();
+            chromeDriver.Url = "https://www.sephora.com/";
+            chromeDriver.Navigate();
+            var closeModalIntro = chromeDriver.FindElement(By.CssSelector("[data-at='modal_close']"));
+            closeModalIntro.Click();
+            var handleOpenModalSignIn = chromeDriver.FindElement(By.CssSelector("[data-at='search_input']"));
+            handleOpenModalSignIn.SendKeys("sephonra lipstick");
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
